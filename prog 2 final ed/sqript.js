@@ -1,52 +1,8 @@
-function matrixGenerate(matLength, gr, grEat,fire) {
-    let matrix = []
-    for (let i = 0; i < matLength; i++) {
-        matrix.push([])
-        for (let j = 0; j < matLength; j++) {
-            matrix[i].push(0)
-        }
-    }
 
-    for (let i = 0; i < grEat; i++) {
-        let x = Math.floor(Math.random() * matLength)
-        let y = Math.floor(Math.random() * matLength)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 2
-        }
-    }
-    for (let i = 0; i < gr; i++) {
-        let x = Math.floor(Math.random() * matLength)
-        let y = Math.floor(Math.random() * matLength)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 1
-        }
-    }
-    for (let i = 0; i < gr; i++) {
-        let x = Math.floor(Math.random() * matLength)
-        let y = Math.floor(Math.random() * matLength)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 3
-        } for (let i = 0; i < fire; i++) {
-            let x = Math.floor(Math.random() * matLength)
-            let y = Math.floor(Math.random() * matLength)
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 4
-            }
-        }
-    }
-    return matrix
-}
 
-let matrix = matrixGenerate(20, 85, 30, 5, 10)
-
-var side = 100;
-let grassArr = []
-let grassEaterArr = []
-let PredatorArr = []
-let fireArr = []
 function setup() {
-    frameRate(5);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+   
+    createCanvas(20 * side, 20 * side);
     background('#acacac');
 
     for (var y = 0; y < matrix.length; y++) {
@@ -94,8 +50,9 @@ function draw() {
     }
     for (let i = 0; i < PredatorArr.length; i++) {
         PredatorArr[i].eat()
-}}{
+    }
+} {
 } for (let i = 0; i < fireArr.length; i++) {
     fireArr[i].eat()
-    }
+}
 

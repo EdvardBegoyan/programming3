@@ -25,7 +25,7 @@ chooseCell(char){
 
     mul() {
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]

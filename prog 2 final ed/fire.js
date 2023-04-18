@@ -26,7 +26,7 @@ class fire extends livingCreature {
 
     mul() {
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]

@@ -30,7 +30,7 @@ class LivingCreature {
     }mul() {
         this.multiply++
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()* emptyCelss)]
         if (this.multiply >= 8 && newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
