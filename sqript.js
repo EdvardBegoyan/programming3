@@ -1,12 +1,12 @@
 var socket = io()
-let side = 30
+ side = 30
 function setup() {
    
     createCanvas(20 * side, 20 * side);
     background('#acacac');
-
-
 }
+
+
 function changeColor(matrix) {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {

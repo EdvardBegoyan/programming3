@@ -1,3 +1,4 @@
+let LivingCreature = require('./LivingCreature')
 class fire extends livingCreature {
     constructor(x, y) {
        super (x,y)

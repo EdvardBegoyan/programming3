@@ -1,4 +1,6 @@
-class Predator extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+class hunter extends LivingCreature {
     constructor(x, y) {
        super(x,y)
         this.energy = 10;
