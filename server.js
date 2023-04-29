@@ -2,15 +2,20 @@ var express = require("express")
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var fs = require("fs")
+var fs = require("fs");
+
+
 app.use(express.static("."));
+
+
+
 app.get("/", function (req, res) {
     res.redirect('index.html');
 
 })
 
 server.listen(3000, function () {
-    console.log('index.html');
+    console.log('server is run');
 });
 
 
@@ -59,14 +64,15 @@ io.sockets.emit('sent matrix', matrix)
 // arrays
 grassArr = []
 grassEaterArr = []
-PredatorArr = []
+hunterArr = []
+predatorArr = []
 fireArr = []
 
 // modules
 Grass = require("./grass")
 GrassEater = require("./grassEater")
 Predator = require("./predator")
-Hanter = require("./hanter")
+Hunter = require("./hunter")
 Fire = require("./fire")
 
 // object generation
@@ -80,14 +86,17 @@ function createObj() {
                 let gr = new Grass(x, y)
                 grassArr.push(gr)
             } else if (matrix[y][x] == 2) {
-                let gr = new GrassEater(x, y)
-                grassEaterArr.push(gr)
+                let ge = new GrassEater(x, y)
+                grassEaterArr.push(ge)
             } else if (matrix[y][x] == 3) {
-                let gr = new Predator(x, y)
-                PredatorArr.push(gr)
+                let p = new Predator(x, y)
+                predatorArr.push(p)
             } else if (matrix[y][x] == 4) {
-                let gr = new fire(x, y)
-                fireArr.push(gr)
+                let f = new Fire(x, y)
+                fireArr.push(f)
+            }else if (matrix[y][x] == 5){
+                let h = new Hunter(x,y)
+                hunterArr.push(h)
             }
         }
     }
@@ -99,18 +108,21 @@ function createObj() {
 
 
 function game() {
-    for (let i = 0; i < grassArr.length; i++) {
+    for (let i in grassArr) {
         grassArr[i].mul()
     }
 
-    for (let i = 0; i < grassEaterArr.length; i++) {
+    for (let i in grassEaterArr) {
         grassEaterArr[i].eat()
     }
-    for (let i = 0; i < PredatorArr.length; i++) {
-        PredatorArr[i].eat()
+    for (let i in predatorArr) {
+        predatorArr[i].eat()
     }
-    for (let i = 0; i < fireArr.length; i++) {
+    for ( let i in fireArr) {
         fireArr[i].eat()
+    }
+    for (let i in hunterArr) {
+        hunterArr[i].eat()
     }
     io.sockets.emit('sent matrix', matrix)
 
@@ -119,9 +131,7 @@ function game() {
 setInterval(game, 300)
 
 
-//
 
 io.on('conection', function () {
     createObj()
 })
-//sdcffgggggdsfgdgfhfryfryry

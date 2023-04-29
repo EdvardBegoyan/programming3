@@ -1,4 +1,4 @@
-var socket = io()
+var sockets = io()
  side = 30
 function setup() {
    

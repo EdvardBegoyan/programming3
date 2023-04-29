@@ -1,6 +1,6 @@
 let LivingCreature = require('./LivingCreature')
 
-class hunter extends LivingCreature {
+module.exports = class Hunter extends LivingCreature {
     constructor(x, y) {
        super(x,y)
         this.energy = 10;
@@ -33,8 +33,8 @@ class hunter extends LivingCreature {
             let newX = newCell[0]
             let newY = newCell[1]
             matrix[newY][newX] = 3
-            let newGr = new Predator(newX, newY)
-            PredatorArr.push(newGr)
+            let newGr = new hunter(newX, newY)
+            hunterArr.push(newGr)
             this.energy = 5
         }
     }
@@ -83,9 +83,9 @@ class hunter extends LivingCreature {
 
     die() {
         matrix[this.y][this.x] = 0
-        for (var i in PredatorArr) {
-            if (this.x == PredatorArr[i].x && this.y == hu[i].y) {
-                PredatorArr.splice(i, 1);
+        for (var i in hunterArr) {
+            if (this.x == hunterArr[i].x && this.y == hu[i].y) {
+                hunterArr.splice(i, 1);
                 break;
             }
         }

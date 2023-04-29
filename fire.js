@@ -1,5 +1,7 @@
+
 let LivingCreature = require('./LivingCreature')
-class fire extends livingCreature {
+
+module.exports = class Fire extends LivingCreature {
     constructor(x, y) {
        super (x,y)
         this.energy = 10;
@@ -32,8 +34,8 @@ class fire extends livingCreature {
             let newX = newCell[0]
             let newY = newCell[1]
             matrix[newY][newX] = 4
-            let newGr = new Predator(newX, newY)
-            PredatorArr.push(newGr)
+            let newGr = new Fire(newX, newY)
+            fireArr.push(newGr)
             this.energy = 5
         }
     }
