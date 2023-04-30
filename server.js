@@ -135,3 +135,14 @@ setInterval(game, 300)
 io.on('conection', function () {
     createObj()
 })
+
+var statistics = {};
+setInterval(function () {
+    statistics.grass = grassArr.length;
+    statistics.grassEater = grassEaterArr.length;
+     statistics.predator = predatorArr.length;
+    statistics.fire = fireArr.length;
+    statistics.hunter = hunterArr.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
+    })
+}, 1000);
