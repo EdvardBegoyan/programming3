@@ -57,7 +57,7 @@ module.exports = class Hunter extends LivingCreature {
 
     eat() {
         let emptyCelss = this.chooseCell(2)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]

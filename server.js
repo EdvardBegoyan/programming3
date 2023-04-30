@@ -14,12 +14,13 @@ app.get("/", function (req, res) {
 
 })
 
-server.listen(3000, function () {
+server.listen(3001, function () {
     console.log('server is run');
 });
 
 
-function matrixGenerate(matLength, gr, grEat, fire) {
+function matrixGenerate(matLength, gr, grEat, fire,predator,hunter) {
+
     matrix = []
     for (let i = 0; i < matLength; i++) {
         matrix.push([])
@@ -58,7 +59,7 @@ function matrixGenerate(matLength, gr, grEat, fire) {
     return matrix
 }
 
-matrix = matrixGenerate(20, 85, 30, 5, 10)
+matrix = matrixGenerate(20, 12, 18,10, 7)
 
 io.sockets.emit('sent matrix', matrix)
 // arrays
@@ -78,7 +79,7 @@ Fire = require("./fire")
 // object generation
 
 function createObj() {
-
+    console.log(matrix);
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -103,7 +104,7 @@ function createObj() {
 
 
 
-    io.socket.emit('sent matrix', matrix)
+    io.sockets.emit('sent matrix', matrix)
 }
 
 
@@ -132,7 +133,7 @@ setInterval(game, 300)
 
 
 
-io.on('conection', function () {
+io.on('connection', function () {
     createObj()
 })
 

@@ -43,7 +43,7 @@ module.exports = class Fire extends LivingCreature {
     move() {
         this.energy--
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell && this.energy >= 0) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -58,7 +58,7 @@ module.exports = class Fire extends LivingCreature {
 
     eat() {
         let emptyCelss = this.chooseCell(2)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]
@@ -70,9 +70,9 @@ module.exports = class Fire extends LivingCreature {
             if (this.energy >= 15) {
                 this.mul()
             }
-            for (var i in PredatorArr) {
-                if (newX == PredatorArr[i].x && newY == PredatorArr[i].y) {
-                    predatorArr.splice(i,1);
+            for (var i in fireArr) {
+                if (newX == fireArr[i].x && newY == fireArr[i].y) {
+                    fireArr.splice(i,1);
                     break;
                 }
             }
@@ -84,9 +84,9 @@ module.exports = class Fire extends LivingCreature {
 
     die() {
         matrix[this.y][this.x] = 0
-        for (var i in fireArr) {
-            if (this.x == fireArr[i].x && this.y == fireArr[i].y) {
-                fireArr.splice(i, 1);
+        for (var i in predatorArr) {
+            if (this.x == predatorArr[i].x && this.y == predatorArr[i].y) {
+                predatorArr.splice(i, 1);
                 break;
             }
         }

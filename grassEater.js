@@ -41,7 +41,7 @@ chooseCell(char){
     move() {
         this.energy--
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell && this.energy >= 0) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -56,7 +56,7 @@ chooseCell(char){
 
     eat() {
         let emptyCelss = this.chooseCell(1)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random()*emptyCelss.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]
